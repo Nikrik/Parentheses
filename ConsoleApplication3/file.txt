@@ -1,0 +1,125 @@
+/*
+ƒан текстовый файл, содержащий программу на €зыке —++.
+ѕроверить эту программу на соответствие открывающих и закрывающих скобок разных типов
+(), {}, [].
+проверка комментариев {][}(];
+*/
+//{][}(]
+#include "pch.h"
+#include <iostream>
+#include <stdio.h>
+#include <fstream>
+#include <string>
+using namespace std;
+
+int Check(string a, int b);
+
+int main()
+{
+	string a;
+	cout << "Enter name of file\n";
+	getline(cin, a);
+
+	ifstream file(a);//открытие файла с названием, который ввел пользователь
+	if (!file.is_open())
+	{
+		cout << "Error, cannot open file";
+		return 0;
+	}
+
+	{
+		string b;
+		a.clear();
+
+		for (unsigned int i = 0; file.good(); i++)
+		{
+			getline(file, b);
+			a += b + "\n";
+		}
+	}
+	file.close();
+	cout << a << endl;
+	if (!Check(a, 0))//0 потому что сначала строки
+	{
+
+	}
+}
+
+int Check(string a, int b)
+{
+	for (int i = b; i < a.length(); i++)//ћожно было это сделать и через .find
+	{
+		switch (a[i])
+		{
+		case '(':
+			//«десь могла быть ваша реклама
+			break;
+
+		case '[':
+			//«десь могла быть ваша реклама
+			break;
+
+		case'{':
+			//«десь могла быть ваша реклама
+			break;
+
+		case '/':
+			if (!a.length()==i-1)
+			{
+				if (a[i + 1] = '/')
+				{
+					for (b=0; i < a.length()||b==1; i++)
+					{
+						if (a[i] == '\n')
+						{
+							b = 1;
+						}
+					}
+				}
+
+				if (a[i + 1] = '*')
+				{
+					for (b = 0; i < a.length() || b == 1; i++)
+					{
+						if (a[i] == '\n')
+						{
+							b = 1;
+						}
+					}
+				}
+			}
+
+		case')':
+			//«десь могла быть ваша реклама
+			break;
+
+		case'}':
+			//«десь могла быть ваша реклама
+			break;
+
+		case']':
+			//«десь могла быть ваша реклама
+			break;
+
+		default:
+			return 0;
+			break;
+		}
+	}
+	return NAN;//не забыть убрать
+}
+
+int findround(string a, int b)//поиск закрытых круглых скобок
+{
+	return 0;//не забыть убрать
+}
+
+int findsquare(string a, int b)//поиск закрытых квадратных скобок
+{
+	return 0;//не забыть убрать
+}
+
+int findbraces(string a, int b)//поиск закрытых фигурных скобок
+{
+	return 0;//не забыть убрать
+}
